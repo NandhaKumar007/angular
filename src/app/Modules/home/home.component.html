@@ -1,0 +1,167 @@
+<div class="loader-bg" *ngIf="showElement">
+  <!-- <h3>Loading...</h3> -->
+  <div class="loading-bar"></div>
+</div>
+
+
+<!-- <section *ngIf="pageLoader">
+  <app-loading-spinner></app-loading-spinner>
+</section> -->
+<main class="smooth-fadein" appDeferTheme>
+  <div class="search-bar">     
+      <div class="search-icon"><i class="material-icons">search</i></div>
+      <input type="text" class="search-input" id="demo" name="search_bar"  [(ngModel)]="search_bar" placeholder="John, manager or software" autocomplete="off" />
+      <div class="close-search"><i class="material-icons">close</i></div>      
+  </div>
+    
+  <!--Nav-->
+  <nav class="navbar theme-gradiant">
+  <div class="container-fluid px-0">
+   <div class="w-100 d-flex align-items-center justify-content-end">
+      <div class="px-2">
+      <a class="js-search" data-close="true" style="cursor: pointer;">     
+      <p align="center" class="icon-p"><i class="material-icons">search</i></p>
+      <p>Search</p>   
+      </a>
+      </div>
+
+      <div class="px-2"> 
+     <a routerLink="/receive-card/{{this.userid}}">      
+      <p align="center" class="icon-p"><i class="material-icons">center_focus_weak</i></p>
+      <p>Receive</p>   
+      </a>
+      </div>
+      <div class="px-2"> 
+        <a routerLink="/myaccount/{{userid}}">      
+         <p align="center" class="icon-p"><i class="material-icons">account_circle</i></p>
+         <p>Account</p>   
+         </a>
+         </div>
+
+      <div class="pl-2 pr-0" (click)="onLogout();"> 
+      <a>
+      <p align="center" class="icon-p"><i class="material-icons">power_settings_new</i></p>
+      <p>Logout</p>  
+      </a> 
+      </div>
+
+  </div>
+  </div>
+  </nav>
+  <!--#Nav-->
+
+  
+  <!--content-->
+  <section class="content" appDeferTheme> 
+     <div class="container-fluid">
+         <!--My cards-->
+         <div class="row m-0 mycards">
+
+              <div class="col-md-12 px-0">
+                  <h4>My Cards</h4>
+              </div>
+
+              <div class="menu-list">
+                  <ul>
+                    <li>
+                      <a routerLink="/create-card">
+                      <div class="card">                      
+                      <i class="newcard-add-icon material-icons text-black-muted">add</i> 
+                      <!-- <p class="mb-0"><span class="theme-gradiant" style="width:100px; height:100px">ewrewrew</span></p> -->
+                      <p class="mb-0"><img src="assets/images/new_card.png" style="width:55px;height:auto"></p>   
+                      <p class="mb-0 fs-16 text-black-muted">Create New Card</p>                       
+                      </div>
+                      </a>
+                    </li>
+
+                    <li *ngFor="let x of cardlist; let i=index;">
+                      <a routerLink="/mycards/{{x._id}}">
+                      <div class="card" [ngStyle]="{'background-color': x.cardcolor}">
+                          <div class="d-flex align-items-start justify-content-start h-100">
+                          <p class="mb-0 fs-16 text-white"><img [src]="imgBaseUrl+x.logoimage" class="circle-img img-fluid"></p>
+                          </div>
+                          <div class="d-flex align-items-end justify-content-start h-100">
+                          <p class="mb-0 fs-16 font-weight600" [ngStyle]="{'color': x.textcolor}">{{x.name}}</p>                          
+                         </div>
+                      </div>
+                      </a>
+                    </li>
+
+                    <!-- <li>
+                      <a routerLink="/mycards">
+                      <div class="card card-bg-img2">
+                          <div class="d-flex align-items-start justify-content-start h-100">
+                          <p class="mb-0 fs-16 text-white"><img src="assets/images/profile.jpeg" class="circle-img img-fluid"></p>
+                          </div>
+                          <div class="d-flex align-items-end justify-content-start h-100">
+                          <p class="mb-0 fs-16 text-white font-weight600">Stella</p>
+                         </div>
+                      </div>
+                      </a>
+                    </li> -->
+
+                  </ul>
+                </div>              
+
+          </div>
+          <!--#My cards-->
+          <!-- <form  autocomplete="off" (ngSubmit)="upload();" ngNativeValidate> 
+ <div class="form-group form-icon-append mb-3">
+                        <label for="logo">Logo</label>
+                        <input style="display: none" type="file" (change)="fileChangeListener($event)" accept="image/jpeg, image/png" #fileInput>
+
+                        <input class="form-control" type="text" id="logoname" name="logoname" [(ngModel)]="cardForm.logoname" readonly> 
+                        <a class="button-link mr-0"  (click)="fileInput.click()"><span>Upload</span></a>
+                      </div>
+                      <input type="submit">
+                      </form> -->
+         <!--My Contact-->
+          <div class="row m-0 mycontact w-100">
+
+              <div class="col-md-12 px-0">
+                  <h4 class="pt-2">My Contacts</h4>
+              </div>
+
+              <div class="concard col-12 px-0">
+
+              <!-- data-custom-animations="true"
+              data-ca-options='{ "triggerHandler":"inview", "animationTarget":"all-childs", "duration":"1200", "delay":"150", "easing":"easeOutQuint", "direction":"forward", 
+              "initValues":{"translateY":60, "translateZ":-160, "rotateX":-84, "opacity":0}, "animations":{"translateY":0, "translateZ":0, "rotateX":0, "opacity":1} }' -->
+                <div class="row pt-2 w-100 m-0 ">
+                    <!--Card1-->
+                    <ng-container *ngFor="let x of contact_card |gridSearch: { name: search_bar}; let i=index;">
+                    <div class="lqd-column col-md-3 col-6 px-1 mb-3  align-items-center" data-custom-animations="true"
+                    data-ca-options='{ "triggerHandler":"inview", "animationTarget":"all-childs", "duration":"1200", "startDelay":"600", "delay":"300", "easing":"easeOutQuint", "direction":"forward", 
+                    "initValues":{"translateY":60, "translateZ":-160, "rotateX":-84, "opacity":0}, "animations":{"translateY":0, "translateZ":0, "rotateX":0, "opacity":1} }'>
+                    <div class="col-md-12 px-0 h-100">
+                        <a routerLink="/mycontact/{{x._id}}/{{x.user_id}}">
+                            <div class="card h-100">
+                                <div class="row m-0 d-flex align-items-start">
+                                <!-- <p class="mb-0 fs-16 text-white"> <i class="icon-bg theme-gradiant material-icons">account_circle</i></p> -->
+                                <p class="mb-0 fs-16 text-white"><img [src]="imgBaseUrl+x.logoimage" class="circle-img img-fluid"></p>
+                                    <div class="contents w-100" >
+                                    <h5 class="pt-2">{{x.name}}</h5> 
+                                    <p class="mb-0 pt-1"><span class="text-black-muted fs-14">{{x.designation}}</span> </p>
+                                    <p class="mb-0 pt-1"><span class="text-black-muted fs-14">{{x.company}}</span> </p>                                    
+                                    </div>
+                                </div>
+                            
+                            </div>
+                        </a>
+                    </div>
+                    </div>  </ng-container>                 
+                    <!--#Card1-->                        
+                    
+                </div>
+                
+              </div>
+         </div>
+         <!--#My Contact-->
+         
+      </div>
+  </section>
+  <!--#content-->
+  
+
+
+</main>

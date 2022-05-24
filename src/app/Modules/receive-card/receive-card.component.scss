@@ -1,0 +1,18 @@
+.pin-container {
+    width: 100%;
+    margin-bottom: 0.8rem;
+  }
+  
+  .pin-container>div {
+    width: 16.66%;
+    padding-right: 5px;
+  }
+  
+  .pin-container>div input {
+    border: none;
+    border-bottom: 3px solid rgba(0,0,0,.45)!important;
+    width: 100%;
+    text-align: center;
+    border-radius: 0;
+    height:35px;
+  }

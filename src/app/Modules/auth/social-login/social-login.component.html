@@ -1,0 +1,53 @@
+<div class="loader-bg" *ngIf="showElement">
+    <!-- <h3>Loading...</h3> -->
+    <div class="loading-bar"></div>
+  </div>
+    <main class="smooth-fadein h-100" style="height:100vh!important">
+    <div class="row m-0 justify-content-center login-div h-100 smooth-fadein">
+    
+        <div class="container">
+            <div class="row d-flex align-items-center justify-content-center h-100">
+    
+                <!--Login div-->
+       
+                <div class="col-md-6 p-3">
+    
+                    <div align="center" class="logo-icon col-md-12">
+                        <i class="login-icon-bg theme-gradiant material-icons">account_circle</i>
+                        <p class="mb-0">Contact App</p>
+                    </div>
+    
+                    <div class="col-md-12" align="center">
+                        <p class="fs-16 m-5 text-black-muted" align="center">Continue with</p>
+                    </div>
+    
+                    <div class="row">
+    
+                    <div class="col-md-6 col-6" align="center" (click)="socialSignIn('facebook');">
+                        <a>
+                            <img class="social-icon" src="assets/images/icons/facebook.svg">
+                            <div class="font-16 font-weight-blod p-2 text-blue">Facebook</div>
+                        </a>
+                    </div>
+    
+                    <div class="col-md-6 col-6" align="center" (click)="socialSignIn('google');">
+                        <a>
+                            <img class="social-icon" src="assets/images/icons/google.svg">
+                            <div class="font-16 font-weight-blod p-2 text-blue">Google</div>
+                        </a>
+                    </div>
+    
+                        <div class="col-md-12"><hr class=""> </div>
+    
+                        <div class="col-md-12"><p class="link pt-2" align="center"><a routerLink="/email-login">USE EMAIL</a></p></div>
+    
+                    </div>
+    
+                </div>
+                 <!--#Login div-->
+            </div>
+        </div>
+     
+    </div>   
+    </main>
+    

@@ -1,0 +1,24 @@
+ <!--Nav-->
+ <div class="loader-bg" *ngIf="showElement">
+    <!-- <h3>Loading...</h3> -->
+    <div class="loading-bar"></div>
+  </div>
+
+ <nav class="navbar theme-gradiant">
+    <div class="container-fluid px-0">
+    </div>
+    </nav>
+
+    <div class="container mx-auto text-center mt-5" >
+        <div class="row">
+            <div class="text-center mt-5 mx-auto" >
+            <h3 *ngIf="truee" class="text-success">Email Verified Successfully</h3>
+            <h3 *ngIf="falsee" class="text-danger">Already Email Verified</h3>
+            <div align="center" class="pt-3">
+                <button class="button-link w-100" routerLink="/email-login"><span style="padding: 8px 10px;">Sign in &nbsp;&nbsp;<!----></span></button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+

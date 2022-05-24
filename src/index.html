@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ContactApp</title>
+  <base href="/">
+  <meta name="theme-color" content="#336FFF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">  
+  <meta name="robots" content="index">
+  <meta name="theme-color" content="#F3DDE0">
+  <meta name="description" content="Bizconnect - Contact App">
+  <meta name="keywords" content="">
+  <meta property="og:site_name" content="Bizconnect">
+  <meta property="og:title" content="Bizconnect">
+  <meta property="og:description" content="Bizconnect - Contact App">
+  <meta property="og:image" content="https://yourstore.io/api/uploads/5eeaf9c703f678018a2e9419/products/KNG57125A_s.jpg">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/custom-style.css">  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css"/> <!-- 'classic' theme -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/monolith.min.css"/> <!-- 'monolith' theme -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/nano.min.css"/> <!-- 'nano' theme -->
+
+</head>
+<style>
+  .loader-bg {
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999999999;
+}
+.loader-bg h3 {
+  position: fixed;
+  /* color: #ff5e31; */
+  color:rgb(51, 111, 255);
+  font-size: 25px;
+  font-family:sans-serif;
+}
+div.loading-bar {
+  width: 150px;
+  height: 5px;
+  background-color: #d6cec2;
+  border-radius: 10px;
+  margin-top: 25px;
+  overflow: hidden;
+  position: relative;
+}
+div.loading-bar::after {
+  content: '';
+  width: 100px;
+  height: 5px;
+  position: absolute;
+  background-color: rgb(51, 111, 255);
+  transform: translateX(-20px);
+  animation: loop 2s ease infinite;
+}
+@keyframes loop {
+  0%,100% {
+    transform: translateX(-28px);
+  }
+  50% {
+    transform: translateX(78px)
+  }
+}
+</style>
+<body>
+
+<app-root></app-root>
+
+<!--script-->
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/theme.min.js"></script>
+<script type="text/javascript" src="assets/js/theme-vendors.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.es5.min.js"></script>
+</body>
+</html>

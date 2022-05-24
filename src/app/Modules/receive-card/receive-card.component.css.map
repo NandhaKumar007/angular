@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,cAAc,CAAC;EACX,KAAK,EAAE,IAAI;EACX,aAAa,EAAE,MAAM;CACtB;;AAED,AAAA,cAAc,GAAC,GAAG,CAAC;EACjB,KAAK,EAAE,MAAM;EACb,aAAa,EAAE,GAAG;CACnB;;AAED,AAAA,cAAc,GAAC,GAAG,CAAC,KAAK,CAAC;EACvB,MAAM,EAAE,IAAI;EACZ,aAAa,EAAE,GAAG,CAAC,KAAK,CAAC,mBAAe,CAAA,UAAU;EAClD,KAAK,EAAE,IAAI;EACX,UAAU,EAAE,MAAM;EAClB,aAAa,EAAE,CAAC;EAChB,MAAM,EAAC,IAAI;CACZ",
+    "sources": [
+        "receive-card.component.scss"
+    ],
+    "names": [],
+    "file": "receive-card.component.css"
+}

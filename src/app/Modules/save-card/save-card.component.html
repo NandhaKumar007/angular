@@ -1,0 +1,155 @@
+<div class="loader-bg" *ngIf="showElement">
+  <!-- <h3>Loading...</h3> -->
+  <div class="loading-bar"></div>
+</div>
+
+
+<main class="smooth-fadein" appDeferTheme>
+    <!--Nav-->
+    <nav class="navbar theme-gradiant">
+    <div class="container-fluid px-0">
+        
+     <div class="row m-0 w-100 d-flex align-items-center">
+
+        <div class="col-2 px-0 d-flex justify-content-start"> 
+        <p align="center" class="icon-p"><a routerLink="/home"><i class="material-icons">arrow_back</i></a></p>       
+        </div>
+
+       
+    </div>
+    
+    </div>
+    </nav>
+    <!--#Nav-->
+
+    <!--content-->
+    <section class="content mycards" style="background-color: #fcfcfc;"> 
+
+      <section>  
+       <div class="container-fluid px-3">
+        
+        <!--My Cards Details-->
+            <div class="row m-0 mycard-details w-100">             
+
+                    <div class="col-md-12 col-12 px-0" data-custom-animations="true"
+                    data-ca-options='{ "triggerHandler":"inview", "animationTarget":"all-childs", "duration":"1200", "delay":"150", "easing":"easeOutQuint", "direction":"forward", 
+                    "initValues":{"translateY":60, "translateZ":-160, "rotateX":-84, "opacity":0}, "animations":{"translateY":0, "translateZ":0, "rotateX":0, "opacity":1} }'>
+                        <div class="card p-3">
+                            <div class="mylogo">
+                                <p align="center" class="d-flex align-items-center justify-content-center text-white h-100">Logo</p>
+                            </div>
+                            <div class="d-flex align-items-start justify-content-start h-100">
+                            <p class="mb-0 fs-16 text-white"> <i class="icon-bg theme-gradiant material-icons">account_circle</i></p>
+                            </div>
+                            <div class="contents pt-2">
+                                <h5 class="mb-0">Rian Ozal Hussain</h5> 
+                                <p class="mb-0 pt-1"><span class="text-black-muted fs-14">Vice President</span></p>
+                                <p class="mb-0 pt-1"><span class="text-black-muted fs-14">S.I.S Pvt.Ltd.</span></p>
+                                </div>
+                        </div>
+                    </div>               
+
+            
+
+           </div>
+           <!--#My Cards Details-->
+
+        </div>
+        </section>
+
+        <!--form details-->
+        <section class="pt-1">
+
+            <div class="container-fluid px-3">
+                <div class="row m-0 w-100 mycard-details">
+                    <form name="frm-details" class="col-12 col-md-12 section-form-scroll slim-scroll" [ngClass]="keyboardRender? 'scroll-mar0': (commonService?.scroll_y_pos>0)? 'scroll-mar2': 'scroll-mar1'"> 
+                        <div class="form-group form-icon-append mb-3">
+                            <label for="phone">Phone</label>
+                            <input class="form-control" value="9884074715" type="number" id="phone" readonly>
+                            <i class='material-icons'> phone </i>
+                          </div>
+
+                          <div class="form-group form-icon-append mb-3">
+                            <label for="phone2">Phone2</label>
+                            <input class="form-control" value="9884074715" type="number" id="phone2" readonly>
+                            <i class='material-icons'> phone </i>
+                          </div>
+
+                          <div class="form-group form-icon-append mb-3">
+                            <label for="email">Email</label>
+                            <input class="form-control" value="" type="email" id="email">
+                            <i class='material-icons'> email </i>
+                          </div>
+
+                          <div class="form-group form-icon-append mb-3">
+                            <label for="addr">Address</label>
+                            <input class="form-control" value="" type="text" id="addr">
+                            <i class='material-icons'> location_on </i>
+                          </div>
+
+                          <div class="form-group form-icon-append mb-3">
+                            <label for="social1">Instagram</label>
+                            <input class="form-control" value="" type="text" id="social1">
+                            <i class='material-icons'><img src="assets/images/icons/instagram.svg" style="width:26px;height:auto"></i>
+                          </div>
+
+                          <div class="form-group form-icon-append mb-3">
+                            <label for="social2">Linkedin</label>
+                            <input class="form-control" value="" type="text" id="social2">
+                            <i class='material-icons'><img src="assets/images/icons/linkedin.svg" style="width:26px;height:auto"></i>
+                          </div>
+
+                          <div class="form-group form-icon-append mb-0">
+                            <label for="social3">Tags</label>
+                            <!-- <input class="form-control" value="" type="text" id="social3" readonly>-->
+                            <div style="border-bottom: 1px solid rgba(0, 0, 0, 0.14)">
+                            <div style="margin-left:45px; margin-top:-20px;">
+                                <a class="button-link"><span>Web development</span></a>
+                                <a class="button-link"><span>Design Web</span></a>
+                                <a class="button-link"><span>Full stack development</span></a>
+                            </div>
+                            </div>   
+                                                  
+                          </div>
+
+                        
+                    </form>
+                </div>
+            </div>
+
+        </section>
+        <!--#form details-->
+        <div [ngStyle]="{'display': (commonService?.scroll_y_pos>0)? 'none': 'block' }"><br/>  <br/>  <br/>  <br/>  <br/><br/></div>
+
+    </section>
+<!--#content-->
+  
+ <!--Footer-->
+  <footer id="footer" class="bottom-footer" [ngClass]="keyboardRender? 'footer-relative' : 'footer-fixed'"> 
+   
+    <div class="footer-div theme-gradiant">
+    <div class="footer-menu d-flex align-items-center justify-content-center">
+    <ul>
+        
+    <li>
+      <a routerLink="/">
+      <p align="center" class="icon-p"><i class="material-icons">clear</i></p>
+      <p>Cancel</p> 
+    </a>
+    </li>   
+        
+    <li>
+      <a routerLink="/">
+        <p align="center" class="icon-p"><i class="material-icons">done</i></p>
+        <p>Save</p> 
+      </a>
+      </li>
+    
+    </ul>
+    </div>
+    
+    </div>
+  
+  </footer>
+  <!--#footer-->
+</main>

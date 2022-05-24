@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,SAAS,CAAC,cAAc,CAAC;EACrB,QAAQ,EAAE,QAAQ;CACrB",
+    "sources": [
+        "carddetails-edit.component.scss"
+    ],
+    "names": [],
+    "file": "carddetails-edit.component.css"
+}

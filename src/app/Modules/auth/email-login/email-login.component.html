@@ -1,0 +1,104 @@
+<div class="loader-bg" *ngIf="showElement">
+    <!-- <h3>Loading...</h3> -->
+    <div class="loading-bar"></div>
+  </div>
+<main class="smooth-fadein h-100" style="height:100vh!important">
+    <div class="row m-0 justify-content-center login-div h-100">
+    
+        <div class="container">
+            <div class="row d-flex align-items-start flex-column h-100">           
+                <!--Login div-->       
+                <div class="container-fluid">
+                    <div class="row m-0 w-100 login-details">
+                        <p class="py-3 px-0 mb-0"><a routerLink="/login" class="back-icon"><i class="material-icons">arrow_back</i></a> </p>                   
+                                         
+                         <div class="col-12 col-md-12 px-2">
+                            <form autocomplete="off" (ngSubmit)="onLogin();" ngNativeValidate>
+                        <h4>Sign in</h4>
+                        <!--Email-->
+                        <div id="email-div">
+
+                            <div class="form-group form-icon-append mb-3 pt-2">
+                                <label for="email">Email</label>
+                                <input class="form-control" placeholder="Enter your email" type="email" name="email" id="email" [(ngModel)]="loginForm.email" #email="ngModel" (input)="loginForm.errorMsg=null;" required>
+                                <i class='material-icons'> email </i>
+                            </div>         
+                        
+                            <div class="form-group form-icon-append mb-3 pt-2">
+                                <label for="password">Password</label>
+                                <input class="form-control" placeholder="Enter your password" [type]="loginForm.input_txt? 'text': 'password'" name="password" id="password" [(ngModel)]="loginForm.password" #password="ngModel" (input)="loginForm.errorMsg=null;" required>
+                                <i class="material-icons visibility_icon" *ngIf="!loginForm.input_txt" (click)="loginForm.input_txt = !loginForm.input_txt" aria-hidden="true">visibility</i>
+                                <i class="material-icons visibility_icon" *ngIf="loginForm.input_txt" (click)="loginForm.input_txt = !loginForm.input_txt" aria-hidden="true">visibility_off</i>
+                            </div>    
+                            <div class="form-group">
+                                <a class="float-right" style="cursor: pointer;margin-top:10px; margin-bottom: 20px;" (click)="forgot_password();">Reset password ?</a>
+                            </div>
+                            
+                            <div class="form-group" *ngIf="loginForm.errorMsg">
+                                <p style="color: red; text-align: center;"><strong>{{loginForm.errorMsg}}</strong></p>                          
+                          </div>
+
+                          <div align="center" class="pt-4">
+                            <button class="button-link w-100" type="submit" id="mobilebtn"  [disabled]="loginForm.submit"><span style="padding:8px 10px;">Login &nbsp;&nbsp;<div class="lds-ellipsis" *ngIf="loginForm.submit"><div></div><div></div><div></div><div></div></div></span> </button>
+                        </div>    
+                        
+                        <div class="col-12 px-0 pt-2" align="right">
+                            <div class="d-flex justify-content-end align-items-center">
+                            <span class="text-black-muted fs-14 pr-2">New here?</span>
+                            <span><a routerLink="/create-account" class="login-link button-link mb-0 mr-0"> 
+                            <span style="padding:6px 20px;">Sign up</span></a></span>
+                            </div>
+                        </div>
+                        
+                         </div>
+                          
+                        </form>
+                        </div>               
+                       
+
+
+                    </div>
+                </div>
+                 <!--#Login div-->
+            </div>
+        </div>
+     
+    </div>   
+</main>
+
+<!-- Social Modal-->
+<!-- Modal -->
+<div class="modal fade" id="forgotModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" #forgotModal>
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-content">     
+        <div class="modal-header">
+            <div class="col-md-12">
+      <h4 class="modal-title" id="defaultModalLabel">Account Recovery</h4>
+            </div>
+  </div>
+  <form autocomplete="off" (ngSubmit)="onForgot();" ngNativeValidate>
+    <div class="modal-body forgot-model-input">
+      <div class="form-group">
+      <input class="form-control" type="email" name="email" placeholder="Email" [(ngModel)]="forgotForm.email" #email="ngModel" (input)="forgotForm.alert_msg=null;" required />
+      </div>
+      <p>A link to reset your password will be sent to this email Address</p>
+      <div *ngIf="forgotForm.alert_msg" class="alert wow fadeIn" [ngClass]="forgotForm.req_status ? 'alert-success' : 'alert-danger'">
+        <a href="javascript:void(0)" (click)="forgotForm.alert_msg=null;" class="close">&times;</a>
+        <strong>{{ forgotForm.alert_msg }}</strong>
+      </div>
+    </div>
+    <div class="modal-footer">  
+        <button type="button" class="button-link" data-dismiss="modal"><span class="px-4">Cancel</span></button>
+        <button type="submit" class="button-link"  [disabled]="forgotForm.submit">
+            <span class="px-5">SUBMIT &nbsp;&nbsp;<div class="lds-ellipsis" *ngIf="forgotForm.submit"><div></div><div></div><div></div><div></div></div></span>
+        </button>
+
+    </div>
+  </form>
+
+      </div>
+    </div>
+  </div>
+  <!--#Social modal-->
+
+    

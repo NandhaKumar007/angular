@@ -1,0 +1,286 @@
+<div class="loader-bg" *ngIf="showElement">
+  <!-- <h3>Loading...</h3> -->
+  <div class="loading-bar"></div>
+</div>
+
+<main class="smooth-fadein" appDeferTheme>
+    <!--Nav-->
+    <nav class="navbar theme-gradiant">
+    <div class="container-fluid px-0">
+        
+     <div class="row m-0 w-100 d-flex align-items-center">
+
+        <div class="col-2 px-0 d-flex justify-content-start"> 
+        <p align="center" class="icon-p"><a routerLink="/home"><i class="material-icons">arrow_back</i></a></p>       
+        </div>  
+
+
+    </div>
+    </div>
+    </nav>
+    <!--#Nav-->
+
+    <!--content-->
+    <form  autocomplete="off" (ngSubmit)="onUpdate();" ngNativeValidate> 
+    <section class="content mycards" style="background-color: #fcfcfc;"> 
+
+      <section>  
+       <div class="container-fluid px-3">
+        
+        <!--My Cards Details-->
+            <div class="row m-0 mycard-details w-100">             
+
+              <div class="col-md-12 col-12 px-0" data-custom-animations="true"
+              data-ca-options='{ "triggerHandler":"inview", "animationTarget":"all-childs", "duration":"1200", "delay":"150", "easing":"easeOutQuint", "direction":"forward", 
+              "initValues":{"translateY":60, "translateZ":-160, "rotateX":-84, "opacity":0}, "animations":{"translateY":0, "translateZ":0, "rotateX":0, "opacity":1} }'>
+                  <div class="card p-3" [ngStyle]="{'background-color': card_details.cardcolor}">
+                      <div class="mylogo" *ngIf="card_details.logoimage">
+                          <p align="center" class="d-flex align-items-center justify-content-center text-white h-100"><img [src]="card_details?.logoimage" style="width:60px; height:auto;"></p>
+                      </div>
+                      <div class="d-flex align-items-start justify-content-start h-100">
+                      <p class="mb-0 fs-16 text-white"> <i class="icon-bg theme-gradiant material-icons">account_circle</i></p>
+                      </div>
+                      <div class="contents pt-2">
+                          <h5 class="mb-0" [ngStyle]="{'color': card_details.textcolor}">{{card_details.name}}</h5> 
+                          <p class="mb-0 pt-1"><span class="fs-14" [ngStyle]="{'color': card_details.textcolor}">{{card_details.designation}}</span></p>
+                          <p class="mb-0 pt-1"><span class="fs-14" [ngStyle]="{'color': card_details.textcolor}">{{card_details.company}}</span></p>
+                          </div>
+                  </div>
+              </div>                
+
+            
+
+           </div>
+           <!--#My Cards Details-->
+
+        </div>
+        </section>
+
+     
+
+        <!--form details-->
+        <section class="pt-1">
+
+            <div class="container-fluid px-3">
+                <div class="row m-0 w-100 mycard-details">
+                    <div class="col-12 col-md-12 section-form-scroll slim-scroll" [ngClass]="keyboardRender? 'scroll-mar0': (commonService?.scroll_y_pos>0)? 'scroll-mar2': 'scroll-mar1'"> 
+                          <div class="form-group form-icon-append mb-3">
+                          <label for="name">Name</label>
+                          <input class="form-control fs-16" type="text" id="name" name="name" [(ngModel)]="card_details.name">
+                            <!-- <i class='material-icons'> phone </i> -->
+                          </div>
+
+                          <div class="form-group form-icon-append mb-3">
+                          <label for="design">Designation</label>
+                          <input class="form-control" type="text" id="designation" name="designation" [(ngModel)]="card_details.designation">
+                            <!-- <i class='material-icons'> phone </i> -->
+                          </div>
+
+                          <div class="form-group form-icon-append mb-3">
+                          <label for="company">Company</label>
+                          <input class="form-control" type="text" id="company" name="company" [(ngModel)]="card_details.company">
+                            <!-- <i class='material-icons'> phone </i> -->
+                          </div>
+
+                          <div class="form-group form-icon-append mb-3">
+                          <label for="logo">Logo</label>
+                          <input style="display: none" type="file" (change)="fileChangeListener($event)" accept="image/jpeg, image/png" #fileInput>
+                          <input class="form-control" type="text" id="logoname" name="logoname" [(ngModel)]="card_details.logoname" readonly> 
+                          <a class="button-link mr-0"  (click)="fileInput.click()"><span>Upload</span></a>
+                          </div>
+
+                          <ng-container *ngFor="let x of card_details.phone; let i=index;">
+                            <div class="form-group form-icon-append mb-3">
+                              <label for="phone{{i}}">Phone {{i+1}}</label>
+                              <input class="form-control" id="phone{{i}}" name="phone{{i}}" [(ngModel)]="x.phonevalue" type="tel" maxlength="10" minlength="10" appNumberOnly placeholder="Phone Number (10 Digit Only)">
+                              <ng-container *ngIf="card_details.phone.length>0">
+                                <a *ngIf="i!=0" (click)="card_details.phone.splice(i, 1);">Remove</a>
+                              </ng-container>
+                              <ng-container *ngIf="card_details.phone.length<3 && i==0">
+                              <a (click)="card_details.phone.push({});" class="button-link mr-0">
+                                <span>Add Number</span>
+                              </a>
+                            </ng-container>
+                            </div>
+                          </ng-container>
+
+                          <ng-container *ngFor="let x of card_details.email; let i=index;">
+                            <div class="form-group form-icon-append mb-3">
+                              <label for="email{{i}}">Email {{i+1}}</label>
+                              <input class="form-control" type="email" name="email{{i}}" id="email{{i}}" [(ngModel)]="x.emailvalue">
+                              <ng-container *ngIf="card_details.email.length>0">
+                                <a *ngIf="i!=0" (click)="card_details.email.splice(i, 1);">Remove</a>
+                              </ng-container>
+                              <ng-container *ngIf="card_details.email.length<3 && i==0">
+                              <a (click)="card_details.email.push({});" class="button-link mr-0">
+                                <span>Add Email</span>
+                              </a>  
+                            </ng-container>                        
+                            </div>
+                          </ng-container>
+
+                            
+                          <div class="form-group form-icon-append mb-3">
+                            <label for="addr">Address</label>
+                            <input class="form-control" type="text" id="address" name="address" [(ngModel)]="card_details.address">
+                            <a class="button-link mr-0"><span>Add Maps</span></a>
+                          </div>
+
+                          <ng-container *ngFor="let x of card_details.socialmedia; let i=index;">
+                            <div class="form-group form-icon-append mb-3">
+                              <label for="social3">Social {{i+1}}</label>                         
+                              <div class="select" style="border-bottom: 1px solid rgba(0, 0, 0, 0.14)">
+                                <select name="slct" name="provider{{i}}" id="provider{{i}}" [(ngModel)]="x.provider">
+                                  <option [(value)]="selected">Select social media</option>
+                                      <option value='Instagram'>Instagram</option>
+                                      <option value='Linkedin'>Linkedin</option>
+                                      <option value='Facebook'>Facebook</option>
+                                      <option value='Pintress'>Pintress</option>
+                                      <option value='Youtube'>Youtube</option>
+                                      <option value='Twitter'>Twitter</option>                                                     
+                                </select>
+                               
+                              </div>  
+                              <ng-container *ngIf="card_details.socialmedia.length>0">
+                                <a *ngIf="i!=0" (click)="card_details.socialmedia.splice(i, 1);">Remove</a>
+                              </ng-container>  
+                              <ng-container *ngIf="card_details.socialmedia.length<3 && i==0">
+                              <a (click)="card_details.socialmedia.push({});" class="button-link mr-0"><span>Add Social</span></a>                     
+                              </ng-container>
+                              </div> 
+                            <div class="form-group form-icon-append mb-3">
+                              <label for="name{{i}}">Provider ID</label>
+                              <input class="form-control" type="text" name="name{{i}}" id="name{{i}}" [(ngModel)]="x.name">                              
+                            </div>
+                          </ng-container>   
+                         
+
+                          <!--Tags-->
+                          <div class="row m-0 form-group mb-3" style="border-bottom: 1px solid rgba(0, 0, 0, 0.14)"> 
+
+                            <div class="col-12 px-0"> <label class="mb-2" for="social3">Tags</label> </div>   
+
+                            <div class="col-8 px-0">  
+                              <tag-input id="tags" name="tags" [(ngModel)]="card_details.tags"></tag-input>                             
+                              <!-- <input class="form-control input-tags" type="text" data-role="tagsinput" id="tags1" name="tags1" [(ngModel)]="cardForm.tags1">   -->
+                            </div>
+
+                            <div class="col-4 form-icon-append px-0" align="right"> 
+                              <a class="button-link mr-0" style="bottom: inherit;"><span>Add Tag</span></a> 
+                            </div>
+
+                          </div>
+                          <!--#Tags-->
+
+                                                             
+
+                          <!--Tags-->
+                          <!-- <div class="row m-0 form-group mb-3" style="border-bottom: 1px solid rgba(0, 0, 0, 0.14)"> 
+
+                            <div class="col-12 px-0"> <label class="mb-2" for="social3">Tags</label> </div>   
+
+                            <div class="col-8 px-0">                               
+                              <input class="form-control input-tags" value="Web Development,Web Design,Web Dev" type="text" data-role="tagsinput">  
+                            </div>
+
+                            <div class="col-4 form-icon-append px-0" align="right"> 
+                              <a class="button-link mr-0" style="bottom: inherit;"><span>Add Tag</span></a> 
+                            </div>
+
+                          </div> -->
+                          <!--#Tags-->
+
+
+                          <div class="form-group mb-0">
+                            <label for="color-picker">Colour</label>                    
+                             <div class="col-12 px-0">
+                                <div class="col-6 float-left d-flex align-items-center" style="padding:2px">
+                                  <a class="button-link mr-0 mb-0 color-picker"><span style="padding-left: 6px;"><span class="picker-span1 m-1" [ngStyle]="{'background-color': card_details.cardcolor}"></span>Card Colour</span></a> 
+                                </div>
+                                <div class="col-6 float-right d-flex align-items-center" style="padding:2px">
+                                  <a class="button-link mr-0 mb-0 color-picker1"><span style="padding-left: 6px;"><span class="picker-span1 m-1" [ngStyle]="{'background-color': card_details.textcolor}"></span>Text Colour</span></a> 
+                                </div>                                                     
+                            </div>
+                          </div>
+   
+                         
+                        
+                      <!-- <div  class="form-group form-icon-append mb-3" >
+                        <main>
+                          <div class="theme-container"></div>
+                          <div class="pickr-container"></div>
+                          <p (click)="openPicker()">(Tap it)</p>
+                        </main>
+                      </div>
+                      -->
+
+                        
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!--#form details-->
+        <div [ngStyle]="{'display': (commonService?.scroll_y_pos>0)? 'none': 'block' }"><br/>  <br/>  <br/>  <br/>  <br/><br/></div>
+
+
+    </section>
+<!--#content-->
+  
+ <!--Footer-->
+ <!-- footer-relative -->
+ <!-- <footer id="footer" class="bottom-footer" [ngClass]="isFocused ? 'footer-relative' : 'footer-fixed'">  -->
+  <footer id="footer" class="bottom-footer" [ngClass]="keyboardRender? 'footer-relative' : 'footer-fixed'"> 
+    <div class="text-center">
+      <p class="text-success" *ngIf="btn_alert1">Your Card Edited Successfully</p>
+      <p class="text-danger" *ngIf="btn_alert2">Your Card was not Edited</p>
+    </div>
+    <div class="footer-div theme-gradiant">
+    <div class="footer-menu d-flex align-items-center justify-content-center">
+      <button type="submit" class="icon-p" [disabled]="card_details.submit" style="font-size: 14px; color:#fff; background:none; line-height:12px;">
+        <i class="material-icons">done</i> <br> Save
+        <i [ngClass]="card_details.submit ? 'fa fa-circle-o-notch fa-spin' : ''"></i>
+      </button><span class="spinner-border spinner-border-sm color-light" role="status" aria-hidden="true" *ngIf="btnloder" style="color: #fff;position: fixed;margin-left: 80px;"></span>
+    <!-- <ul>
+        
+    <li>
+    <a routerLink="/">
+      <p align="center" class="icon-p"><i class="material-icons">done</i></p>
+      <p>Save</p> 
+    </a>
+    </li>      
+   
+    
+    </ul> -->
+    </div>
+    
+    </div>
+  
+  </footer>
+  </form>
+  <!--#footer-->
+</main>
+
+<!-- Social Modal-->
+<!-- Modal -->
+<div class="modal fade" id="social" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content m-5">     
+      <div class="modal-body px-4 py-5">
+       <div class="col-md-12 text-black-muted">
+         <p>Instagram</p>
+         <p>Linkedin</p>
+         <p>Facebook</p>
+         <p>Pintress</p>
+         <p>Youtube</p>
+         <p class="mb-0">Twitter</p>
+       </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button-link" data-dismiss="modal"><span class="px-4">Cancel</span></button>
+       
+      </div>
+    </div>
+  </div>
+</div>
+<!--#Social modal-->

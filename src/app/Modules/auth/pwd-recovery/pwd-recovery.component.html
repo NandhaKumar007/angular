@@ -1,0 +1,92 @@
+<div class="loader-bg" *ngIf="showElement">
+    <!-- <h3>Loading...</h3> -->
+    <div class="loading-bar"></div>
+  </div>
+
+<main class="smooth-fadein h-100" style="height:100vh!important" >
+    <div class="row m-0 justify-content-center login-div h-100">
+    
+        <div class="container">
+            <div class="row d-flex align-items-start flex-column h-100">           
+                <!--Login div-->       
+                <div class="container-fluid">
+                    <div class="row m-0 w-100 login-details">
+                        <p class="py-3 px-0 mb-0"><a routerLink="/email-login" class="back-icon"><i class="material-icons">arrow_back</i></a> </p>                   
+                                         
+                        <div class="col-12 col-md-12 px-2">
+                            <form autocomplete="off" (ngSubmit)="onPwdUpdate();" ngNativeValidate>
+                            <h4>Account Recovery</h4>
+                            <!--Email-->
+                            <div id="email-div" *ngIf="recoveryStatus">
+
+                                <div class="form-group form-icon-append mb-3 pt-2">
+                                    <label for="password">Password</label>
+                                    <input class="form-control" placeholder="Enter your password" [type]="pwdForm.input_txt? 'text': 'password'" name="password" id="password" [(ngModel)]="pwdForm.password" #password="ngModel" pattern=".{6,}" title="Six or more characters" (input)="pwdForm.errorMsg=null;" required>
+                                    <i class="material-icons visibility_icon" *ngIf="!pwdForm.input_txt" (click)="pwdForm.input_txt = !pwdForm.input_txt" aria-hidden="true">visibility</i>
+                                    <i class="material-icons visibility_icon" *ngIf="pwdForm.input_txt" (click)="pwdForm.input_txt = !pwdForm.input_txt" aria-hidden="true">visibility_off</i>
+                                    <!-- <i class='material-icons'> visibility_off </i> -->
+                                </div>   
+                            
+                                <div class="form-group form-icon-append mb-3 pt-2">
+                                    <label for="confirm_pwd">Re-Type Password</label>
+                                    <input class="form-control" placeholder="Confirm your password" type="password" name="confirm_pwd" id="confirm_pwd" [(ngModel)]="pwdForm.confirm_pwd" #confirm_pwd="ngModel" (input)="pwdForm.errorMsg=null;" required>
+                                    <i *ngIf="pwdForm.confirm_pwd && pwdForm.password==pwdForm.confirm_pwd"class="material-icons wow fadeIn" aria-hidden="true">check_circle</i>
+                                    <!-- <i class='material-icons'> visibility_off </i> -->
+                                </div> 
+
+                                
+
+                                <!-- <div class="form-group form-icon-append mb-3 pt-2">
+                                    <label for="email">Email</label>
+                                    <input class="form-control" placeholder="Enter your email" type="email" id="email">
+                                    <i class='material-icons'> email </i>
+                                </div>          -->
+                            
+                                <!-- <div class="col-12 px-0">
+                                <p class="text-black-muted fs-14">A link to reset your password will be sent to this email address</p>
+                                </div>    -->
+                        
+                                <div class="row m-0 pt-2 d-flex justify-content-between">
+                                    <div class="w-100 d-flex align-items-center">                              
+                                    <button class="button-link w-100" type="submit"><span style="padding:6px 20px;">Close</span></button> 
+                                    <button class="button-link w-100" type="submit" [disabled]="pwdForm.confirm_pwd && pwdForm.password!=pwdForm.confirm_pwd || pwdForm.submit">
+                                        <span style="padding:8px 10px;">Submit &nbsp;&nbsp;<div class="lds-ellipsis" *ngIf="pwdForm.submit"><div></div><div></div><div></div><div></div></div></span> 
+                                        </button>
+                                    <!-- <button class="button-link w-100 mr-0" type="submit"><span style="padding:6px 20px;">Submit</span></button>                            -->
+                                    </div>                           
+                                </div>
+                            
+                            </div>
+
+                            <div class="col-md-12 pt-5" *ngIf="!recoveryStatus">
+                                <!-- Start Error Message Box -->
+                                <div class="message-box error-msg d-flex align-items-center mt-1" [ngClass]="pwdForm.req_status ? 'bg_cat--3' : 'bg_cat--2'">
+                                  <div class="icon d-inline-block">
+                                    <i *ngIf="!pwdForm.req_status" class="material-icons error-icon">error_outline</i>
+                                    <i *ngIf="pwdForm.req_status" class="material-icons success-icon">check_circle</i>
+                                  </div>
+                                  <div class="content d-inline-block">
+                                    <p>{{ responseData }}</p>
+                                  </div>
+                                </div>
+                                <!-- End Error Message Box -->
+                              </div>
+                            <!--#Email-->                            
+
+                            </form>
+                        </div>             
+                       
+
+                    </div>
+                </div>
+                 <!--#Login div-->
+            </div>
+            <div class="row">
+                
+            </div>
+        </div>
+     
+    </div>   
+</main>
+
+    

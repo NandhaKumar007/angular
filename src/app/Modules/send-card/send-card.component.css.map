@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "send-card.component.scss"
+    ],
+    "names": [],
+    "file": "send-card.component.css"
+}

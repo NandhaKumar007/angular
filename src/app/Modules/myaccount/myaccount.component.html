@@ -1,0 +1,137 @@
+<div class="loader-bg" *ngIf="showElement">
+  <!-- <h3>Loading...</h3> -->
+  <div class="loading-bar"></div>
+</div>
+
+<main class="smooth-fadein" appDeferTheme>
+    <!--Nav-->
+    <nav class="navbar theme-gradiant">
+    <div class="container-fluid px-0">
+        
+     <div class="row m-0 w-100 d-flex align-items-center">
+
+        <div class="col-2 px-0 d-flex justify-content-start"> 
+        <p align="center" class="icon-p"><a routerLink="/home"><i class="material-icons">arrow_back</i></a></p>       
+        </div>  
+
+
+    </div>
+    </div>
+    </nav>
+    <!--#Nav-->
+
+    <!--content-->
+    <section class="content" style="background-color: #fcfcfc;"> 
+
+      <section>  
+       <div class="container-fluid px-3">
+        
+        <!--My Cards Details-->
+            <div class="row m-0 myaccount w-100">             
+
+                    <div class="col-md-12 col-12 px-0" data-custom-animations="true"
+                    data-ca-options='{ "triggerHandler":"inview", "animationTarget":"all-childs", "duration":"1200", "delay":"150", "easing":"easeOutQuint", "direction":"forward", 
+                    "initValues":{"translateY":60, "translateZ":-160, "rotateX":-84, "opacity":0}, "animations":{"translateY":0, "translateZ":0, "rotateX":0, "opacity":1} }'>
+                        <div class="card px-3 py-4">
+                          
+                            <div class="d-flex align-items-center justify-content-center w-100 h-100">
+                            <div class="mb-0 fs-16 text-white form-group" style="position: relative;" > 
+                              <!-- <form action=""> -->
+                              <input style="display: none" type="file" (change)="fileChangeListener($event)" accept="image/jpeg, image/png" #fileInput>
+                              <input class="form-control d-none" type="text" id="logoname" name="logoname" [(ngModel)]="myprofile.logoname" readonly> 
+                            
+                              <div *ngIf="myprofile_img">
+                                <p align="center" class="d-flex align-items-center justify-content-center text-white"><img [src]="pro_image" style="width:110px; height:auto;border-radius: 50%;"></p>
+                              </div>>
+      
+                                <i *ngIf="no_myprofile" class="icon-bg theme-gradiant material-icons">account_circle</i>
+                               
+                              <p class="photo-icon-bg"><i class="material-icons" (click)="fileInput.click()">photo_camera</i></p>
+                            <!-- </form> -->
+                            </div>
+                            
+                            </div>                         
+                        </div>
+                    </div>               
+
+            
+
+           </div>
+           <!--#My Cards Details-->
+
+        </div>
+        </section>
+
+     
+
+        <!--form details-->
+        <section class="pt-1" data-custom-animations="true"
+        data-ca-options='{ "triggerHandler":"inview", "animationTarget":"all-childs", "duration":"1200", "delay":"150", "easing":"easeOutQuint", "direction":"forward", 
+        "initValues":{"translateY":60, "translateZ":-160, "rotateX":-84, "opacity":0}, "animations":{"translateY":0, "translateZ":0, "rotateX":0, "opacity":1} }'>
+
+            <div class="container-fluid px-3">
+                <div class="row m-0 w-100 mycard-details">
+                    <form name="frm-details" class="col-12 col-md-12 section-form-scroll slim-scroll" [ngClass]="(commonService?.scroll_y_pos>0)? 'acc-mar2': 'acc-mar1'"> 
+
+                        <div class="form-group form-icon-append mb-3">
+                            <label for="save-cards">Saved cards</label>
+                            <input class="form-control fs-16" value="{{this.length}}" type="text" id="save-cards" readonly>
+                            <!-- <i class='material-icons'> phone </i> -->
+                          </div>
+
+                          <div class="form-group form-icon-append mb-3">
+                            <label for="save-others">Saved by others</label>
+                            <input class="form-control" value="127" type="text" id="save-others" readonly>
+                            <!-- <i class='material-icons'> phone </i> -->
+                          </div>
+
+                          <div class="form-group form-icon-append mb-3">
+                            <label for="download">Download</label>
+                            <input class="form-control" value="Scanable card to print" type="text" id="download" readonly>
+                            <i class='material-icons'> get_app </i>
+                          </div>
+
+                          <div class="form-group form-icon-append mb-3">
+                            <label for="plan">Plan</label>
+                            <input class="form-control" value="Free" type="text" id="plan">
+                            <a routerLink="/" class="button-link mr-0"><span>Upgrade</span></a>
+                          </div>
+
+                        <div class="form-group form-icon-append mb-3">
+                            <label for="invite">Invited</label>
+                            <input class="form-control" value="12" type="text" id="invite" readonly>
+                            <a class="button-link mr-0"><span>Invite</span></a>
+                          </div>
+
+                          <div class="form-group form-icon-append mb-3">
+                            <label for="privacy">Privacy</label>
+                            <input class="form-control" value="Privacy policy" type="text" id="privacy" readonly>
+                            <!-- <a class="button-link mr-0"><span>Add Number</span></a> -->
+                          </div>   
+                          
+                          <div class="form-group form-icon-append mb-3">
+                            <label for="terms">Terms</label>
+                            <input class="form-control" value="Terms and conditions" type="text" id="terms" readonly>
+                            <!-- <a class="button-link mr-0"><span>Add Number</span></a> -->
+                          </div>   
+
+                          <div class="form-group form-icon-append mb-3">
+                            <label for="feedback">Feedback</label>
+                            <input class="form-control" value="Help us improve" type="text" id="feedback" readonly>
+                            <!-- <a class="button-link mr-0"><span>Add Number</span></a> -->
+                          </div>                          
+                         
+                                                                
+                    </form>
+                </div>
+            </div>
+
+        </section>
+        <!--#form details-->
+        <div [ngStyle]="{'display': (commonService?.scroll_y_pos>0)? 'none': 'block' }"><br/>  <br/>  <br/>  <br/>  <br/><br/></div>
+
+    </section>
+<!--#content-->
+
+</main>
+

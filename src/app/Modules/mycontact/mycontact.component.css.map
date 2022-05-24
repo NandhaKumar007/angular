@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "mycontact.component.scss"
+    ],
+    "names": [],
+    "file": "mycontact.component.css"
+}

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,OAAO,CAAC;EACJ,MAAM,EAAE,KAAK;CAChB",
+    "sources": [
+        "create-card.component.scss"
+    ],
+    "names": [],
+    "file": "create-card.component.css"
+}
